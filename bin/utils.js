@@ -19,7 +19,7 @@ exports.setTemplate = (data) => {
 
 /**
  * 下载不同的模板
- * @param {*} template 模板路径
+ * @param {string} template 模板路径
  */
 const getTemplate = (template) => {
   console.log('template is', template)
