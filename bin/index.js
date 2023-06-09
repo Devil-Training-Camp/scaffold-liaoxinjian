@@ -1,23 +1,20 @@
 #! /usr/bin/env node
 
 const { Command } = require('commander');
-// const inquirer = require('inquirer');
+const { TEMPLATEGROUP, ERROR } = require('./enum');
 const program = new Command();
 
-// const question = [
-//   {
-//     type:"list", // 此处可以 替换成rawlist试试看
-//     message:"请选择一个版本：",
-//     name:"plugin",
-//     default:"vue2.x",
-//   },
-//   {
-//     type: 'input',
-//     message: '你的名字是',
-//     name: 'name',
-//     default: '张三'
-//   }
-// ]
+let args = {};
+
+const setTemplate = (data) => {
+  if (data.indexOf('/') > -1) {
+    // 这是对传入地址的处理
+  } else {
+    console.log('进来了')
+    if (!TEMPLATEGROUP[data]) throw new Error(ERROR.TEMPLATEERROR)
+  }
+}
+
 program
   .version('0.0.1')
   .option('-v, --version', 'This is the version');
@@ -25,10 +22,16 @@ program
 program
   .command('create <name>')
   .description('初始化模板')
-  .option('-t, --template', 'This is the selection template', 'default')
+  // 这里给选项一个必填值，如果给个可选值的话  到时候用户只输入 -t 没有带后面的参数，还得对这个结果进行处理
+  // 用户不输入参数后，返回过来的参数结果为 { template: true }
+  .option('-t, --template <value>', 'This is the selection template', 'default')
   .action((name, cmd) => {
     // 这是拿到了模板名字， 等下拿这个名字在用户目录下面通过 fs 模块写入文件名
     console.log('name is', name);
     console.log('cmd is', cmd);
+    setTemplate(cmd.template);
+    args = cmd;
   });
 program.parse();
+
+
