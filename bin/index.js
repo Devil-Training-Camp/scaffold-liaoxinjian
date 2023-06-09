@@ -1,19 +1,8 @@
 #! /usr/bin/env node
 
 const { Command } = require('commander');
-const { TEMPLATEGROUP, ERROR } = require('./enum');
+const { setTemplate } = require('./utils');
 const program = new Command();
-
-let args = {};
-
-const setTemplate = (data) => {
-  if (data.indexOf('/') > -1) {
-    // 这是对传入地址的处理
-  } else {
-    console.log('进来了')
-    if (!TEMPLATEGROUP[data]) throw new Error(ERROR.TEMPLATEERROR)
-  }
-}
 
 program
   .version('0.0.1')
@@ -30,7 +19,6 @@ program
     console.log('name is', name);
     console.log('cmd is', cmd);
     setTemplate(cmd.template);
-    args = cmd;
   });
 program.parse();
 
