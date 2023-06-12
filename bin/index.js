@@ -2,12 +2,18 @@
 
 const { Command } = require('commander');
 const inquirer = require("inquirer");
+const fs = require('fs');
+const path = require('path');
 const { setTemplate } = require('./utils');
 const { QUESTIONGROUP } = require('./enum');
 const program = new Command();
 
+// 读取 package.json 配置
+const PACKAGE = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'package.json')));
+const VERSION = PACKAGE.version;
+
 program
-  .version('0.0.1')
+  .version(VERSION)
   .option('-v, --version', 'This is the version');
 
 program
