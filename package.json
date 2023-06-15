@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "xj-cli": "index.ts"
+    "xj-cli": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "start": "ts-node index_copy.ts"
   },
   "keywords": [],
   "author": "",
