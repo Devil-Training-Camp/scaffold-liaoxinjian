@@ -3,7 +3,7 @@ const { Command } = require('commander');
 const inquirer = require("inquirer");
 const fs = require('fs');
 const path = require('path');
-const { setTemplate } = require('./bin/utils');
+const { setTemplate } = require('./bin/create');
 const { QUESTIONGROUP } = require('./bin/enum');
 const program = new Command();
 
