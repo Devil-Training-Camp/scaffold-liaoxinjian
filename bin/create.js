@@ -24,7 +24,7 @@ exports.setTemplate = (data) => {
  */
 const getTemplate = (template) => {
   console.log('template is', template)
-  download(template, 'test/tmp', (err) => {
+  download(`direct:${template}`, 'test/tmp', (err) => {
     console.log(err? 'error': 'sucess');
     console.log('err is', err);
     if (err) console.log(`你所下载的模板${err.statusCode}了，请重新检查下哈`);
