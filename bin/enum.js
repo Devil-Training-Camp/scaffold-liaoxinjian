@@ -1,5 +1,5 @@
 // 模板组
-exports.TEMPLATEGROUP = {
+exports.TEMPLATE_GROUP = {
   "vue": "vue",
   "default": "vue",
   "react": "react"
@@ -7,11 +7,11 @@ exports.TEMPLATEGROUP = {
 
 // 报错信息
 exports.ERROR = {
-  TEMPLATEERROR: "Built-in templates include react, vue, default. Of course, we also support passing in template addresses"
+  TEMPLAT_EERROR: "Built-in templates include react, vue, default. Of course, we also support passing in template addresses"
 }
 
 // 问题选项组
-exports.QUESTIONGROUP = [
+exports.QUESTION_GROUP = [
   {
     type: "confirm",
     message: "是否开启 typeScript 功能",
