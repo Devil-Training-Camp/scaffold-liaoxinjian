@@ -9,9 +9,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
-    "outDir": "./output",
+    "outDir": "./lib",
     "types": [
       "node"
     ],
