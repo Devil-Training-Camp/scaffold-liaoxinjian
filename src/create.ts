@@ -1,7 +1,6 @@
 const download = require('download-git-repo');
-const { TEMPLATEGROUP, ERROR } = require('./enum');
 
-exports.setTemplate = (data) => {
+export default (data:string) => {
   if (data.indexOf('/') > -1) {
     // 这是对传入地址的处理
     let reg = /http:\/\/|https:\/\//;
@@ -13,8 +12,8 @@ exports.setTemplate = (data) => {
     }
     getTemplate(templateUrl);
   } else {
-    if (!TEMPLATEGROUP[data]) throw new Error(ERROR.TEMPLATEERROR);
-    getTemplate(TEMPLATEGROUP[data]);
+    if (!TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP]) throw new Error(ERROR.TEMPLAT_EERROR);
+    getTemplate(TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP]);
   }
 }
 
@@ -22,9 +21,9 @@ exports.setTemplate = (data) => {
  * 下载不同的模板
  * @param {string} template 模板路径
  */
-const getTemplate = (template) => {
+const getTemplate = (template: string) => {
   console.log('template is', template)
-  download(`direct:${template}`, 'test/tmp', (err) => {
+  download(`direct:${template}`, 'test/tmp', (err: DowloadError) => {
     console.log(err? 'error': 'sucess');
     console.log('err is', err);
     if (err) console.log(`你所下载的模板${err.statusCode}了，请重新检查下哈`);

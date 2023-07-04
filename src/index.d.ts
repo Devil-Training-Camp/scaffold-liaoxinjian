@@ -1,17 +1,27 @@
+declare interface AnswerObject {
+  eslintStatus: boolean;
+  prettierStatus: boolean;
+}
+
+// download 报错信息
+declare interface DowloadError {
+  statusCode: number
+}
+
 // 模板组
-exports.TEMPLATE_GROUP = {
-  "vue": "vue",
-  "default": "vue",
-  "react": "react"
+declare enum TEMPLATE_GROUP {
+  "vue" = "vue",
+  "default" = "vue",
+  "react" = "react"
 }
 
 // 报错信息
-exports.ERROR = {
-  TEMPLAT_EERROR: "Built-in templates include react, vue, default. Of course, we also support passing in template addresses"
+declare enum ERROR {
+  TEMPLAT_EERROR = "Built-in templates include react, vue, default. Of course, we also support passing in template addresses"
 }
 
 // 问题选项组
-exports.QUESTION_GROUP = [
+declare const QUESTION_GROUP = [
   {
     type: "confirm",
     message: "是否开启 typeScript 功能",
@@ -31,7 +41,7 @@ exports.QUESTION_GROUP = [
     type: "confirm",
     message: "是否开启 lint-staged 功能",
     name: "lintStatus",
-    when(answer) {
+    when(answer: AnswerObject) {
       return answer.eslintStatus && answer.prettierStatus;
     }
   },
@@ -48,3 +58,10 @@ exports.QUESTION_GROUP = [
     choices: ["none", "webpack", "vite", "rollup"]
   }
 ]
+
+// action 方法中关于 cmd 的接口定义
+interface CmdOptions {
+  template: string;
+}
+
+declare module 'inquirer';

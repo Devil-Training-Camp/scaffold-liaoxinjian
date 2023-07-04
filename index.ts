@@ -1,18 +1,14 @@
 #! /usr/bin/env node
-const { Command } = require('commander');
-const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
-const { setTemplate } = require('./src/create');
-const { QUESTIONGROUP } = require('./src/enum');
+import { Command } from 'commander';
+import inquirer from 'inquirer';
+import fs from 'fs';
+import path from 'path';
+import setTemplate from './src/create';
 const program = new Command();
 
-interface CmdOptions {
-  template: string;
-}
-
 // 读取 package.json 配置
-const PACKAGE = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'package.json')));
+const packagePath = path.resolve(process.cwd(), 'package.json');
+const PACKAGE = JSON.parse(fs.readFileSync(packagePath).toString());
 const VERSION = PACKAGE.version;
 
 program
@@ -29,7 +25,7 @@ program
     // 这是拿到了模板名字， 等下拿这个名字在用户目录下面通过 fs 模块写入文件名
     // console.log('name is', name);
     // console.log('cmd is', cmd);
-    const answer = await inquirer.prompt(QUESTIONGROUP);
+    const answer = await inquirer.prompt(QUESTION_GROUP);
     // console.log(answer);
     setTemplate(cmd.template);
   });

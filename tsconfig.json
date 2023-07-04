@@ -3,7 +3,6 @@
     "target": "esnext",
     "module": "es6",
     "strict": true,
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -18,9 +17,7 @@
     "declaration": false,// 是否生成声明文件
     "lib": [
       "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+      "dom"
     ]
   },
   "exclude": [
