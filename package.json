@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "xj-cli": "index.js"
+    "xj-cli": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index_copy.ts",
+    "build": "npm run build:rm && npm run build:ts",
+    "build:rm": "rm -rf lib/*",
+    "build:ts": "tsc --build",
     "lint": "eslint index.ts --ext .ts --ext .tsx",
     "lint:fix": "eslint index.ts --ext .ts --ext .tsx --fix"
   },
@@ -27,5 +28,6 @@
     "eslint": "^8.43.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.3"
-  }
+  },
+  "type": "module"
 }
