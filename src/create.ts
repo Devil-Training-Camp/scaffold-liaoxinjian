@@ -1,4 +1,6 @@
-const download = require('download-git-repo');
+// const download = require('download-git-repo');
+import download from 'download-git-repo';
+import { TEMPLATE_GROUP, ERROR, DowloadError } from './enum.js';
 
 export default (data:string) => {
   if (data.indexOf('/') > -1) {
@@ -23,9 +25,9 @@ export default (data:string) => {
  */
 const getTemplate = (template: string) => {
   console.log('template is', template)
-  download(`direct:${template}`, 'test/tmp', (err: DowloadError) => {
+  download(`direct:${template}`, 'test/tmp', (err: NodeJS.ErrnoException) => {
     console.log(err? 'error': 'sucess');
     console.log('err is', err);
-    if (err) console.log(`你所下载的模板${err.statusCode}了，请重新检查下哈`);
+    if (err) console.log(`你所下载的模板${err.code}了，请重新检查下哈`);
   })
 }

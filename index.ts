@@ -3,7 +3,8 @@ import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
-import setTemplate from './src/create';
+import setTemplate from './src/create.js';
+import { CmdOptions, QUESTION_GROUP } from './src/enum.js';
 const program = new Command();
 
 // 读取 package.json 配置
