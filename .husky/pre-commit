@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-npm run lint
+npm run prettier && git add -A . && npx lint-staged
+# 以上命令 "lint-staged -c ./.husky/lintstagedrc.js"
