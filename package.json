@@ -13,7 +13,7 @@
     "lint": "eslint index.ts --ext .ts --ext .tsx",
     "lint:fix": "eslint index.ts --ext .ts --ext .tsx --fix",
     "prepare": "husky install",
-    "prettier": "prettier --write *.{js,md,json} packages/**/*.{js,json,vue}"
+    "prettier": "prettier --config .prettierrc --check \"src/**/*.{js,ts,css,html}\" --write"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
