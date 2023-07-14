@@ -12,7 +12,13 @@
     "build:ts": "tsc --build",
     "lint": "eslint index.ts --ext .ts --ext .tsx",
     "lint:fix": "eslint index.ts --ext .ts --ext .tsx --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier --write *.{js,md,json} packages/**/*.{js,json,vue}"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix"
+    ]
   },
   "keywords": [],
   "author": "liaoxinjian",
@@ -31,6 +37,7 @@
     "eslint": "^8.43.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.3"
   },
