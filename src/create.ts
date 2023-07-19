@@ -1,37 +1,37 @@
 // const download = require('download-git-repo');
 import download from 'download-git-repo';
-import { TEMPLATE_GROUP, ERROR, DowloadError } from './enum.js';
+import { TEMPLATE_GROUP, AnswerOptions } from './enum.js';
+import { promisefy } from './utils.js';
+import ora from 'ora';
 
-export default (data: string) => {
+const downloadPromise = promisefy(download);
+
+export default (data: string, path: string, answer: AnswerOptions) => {
+  let template = '';
   if (data.indexOf('/') > -1) {
-    // 这是对传入地址的处理
-    const reg = /http:\/\/|https:\/\//;
-    let templateUrl = '';
-    if (reg.test(data)) {
-      templateUrl = data;
-    } else {
-      templateUrl =
-        data[0] === '/'
-          ? `https://github.com${data}`
-          : `https://github.com/${data}`;
-    }
-    getTemplate(templateUrl);
+    template = data;
   } else {
-    if (!TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP])
-      throw new Error(ERROR.TEMPLAT_EERROR);
-    getTemplate(TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP]);
+    template = TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP];
   }
+  getTemplate(template, path, answer);
 };
 
 /**
  * 下载不同的模板
  * @param {string} template 模板路径
  */
-const getTemplate = (template: string) => {
-  console.log('template is', template);
-  download(`direct:${template}`, 'test/tmp', (err: NodeJS.ErrnoException) => {
-    console.log(err ? 'error' : 'sucess');
-    console.log('err is', err);
-    if (err) console.log(`你所下载的模板${err.code}了，请重新检查下哈`);
-  });
+const getTemplate = async (
+  template: string,
+  path: string,
+  answer: AnswerOptions,
+) => {
+  const spinner = ora('Loading').start();
+  const mergePath = answer.mergePath || 'main';
+  downloadPromise(`${template}#${mergePath}`, `${path}`)
+    .then((res) => {
+      spinner.succeed('done!');
+    })
+    .catch((err) => {
+      spinner.fail('fail');
+    });
 };

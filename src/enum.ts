@@ -20,8 +20,23 @@ export enum ERROR {
   TEMPLAT_EERROR = 'Built-in templates include react, vue, default. Of course, we also support passing in template addresses',
 }
 
+export interface AnswerOptions {
+  mergePath: string;
+  tsStatus: Boolean;
+  eslintStatus: Boolean;
+  prettierStatus: Boolean;
+  lintStatus: Boolean;
+  cssStatus: string;
+  constructStatus: string;
+}
+
 // 问题选项组
 export const QUESTION_GROUP = [
+  {
+    type: 'input',
+    message: '请输入拉取的分支，默认为main',
+    name: 'mergePath',
+  },
   {
     type: 'confirm',
     message: '是否开启 typeScript 功能',
