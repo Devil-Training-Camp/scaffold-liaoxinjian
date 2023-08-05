@@ -7,15 +7,19 @@
     "xj-cli": "./bin/index.js"
   },
   "scripts": {
+    // 其实，这里 tsc -b --force 就可以了
     "build": "npm run build:rm && npm run build:ts",
     "build:rm": "rm -rf lib/*",
     "build:ts": "tsc --build",
+    // eslint ./ --cache 就可以了
     "lint": "eslint index.ts --ext .ts --ext .tsx",
     "lint:fix": "eslint index.ts --ext .ts --ext .tsx --fix",
     "prepare": "husky install",
+    // 没必要单独加一个 prettier 配置，配置进lint 规则里面就好了
     "prettier": "prettier --config .prettierrc --check \"src/**/*.{js,ts,css,html}\" --write"
   },
   "lint-staged": {
+    // 这里也有问题，我看你的 eslint 配置只对 js、ts 生效，但这里配置了很多别的后缀类型
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "eslint --fix"
     ]
@@ -33,6 +37,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
+    // 这版本有点高了，^16 应该就可以了
     "@types/node": "^20.3.1",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "eslint": "^8.43.0",

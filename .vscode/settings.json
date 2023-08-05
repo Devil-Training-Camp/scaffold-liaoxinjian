@@ -1,0 +1,7 @@
+// 还可以加这个 settings 配置，用来设置统一的 vscode 配置
+{
+    "files.associations": {
+        "*.json": "jsonc",
+        "package.json": "json"
+    }
+}

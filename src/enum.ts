@@ -4,6 +4,7 @@ export interface AnswerObject {
 }
 
 // download 报错信息
+// TYPO
 export interface DowloadError {
   statusCode: number;
 }
@@ -17,6 +18,7 @@ export enum TEMPLATE_GROUP {
 
 // 报错信息
 export enum ERROR {
+  // TYPO
   TEMPLAT_EERROR = 'Built-in templates include react, vue, default. Of course, we also support passing in template addresses',
 }
 

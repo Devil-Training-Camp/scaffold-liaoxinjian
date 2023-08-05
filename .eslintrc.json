@@ -1,3 +1,4 @@
+// ESLint 配置应该尽可能用 js/mjs/ts 等方式，json 配置有点不太灵活了
 {
   "env": {
     "node": true,
@@ -11,6 +12,7 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  // 这个依赖没有声明哦，得加一下
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -22,9 +24,12 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    // 用 prettier 做格式化吧
+    // 这里需要加 prettier 插件的
     "@typescript-eslint/indent": ["warn", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
+    // 为什么要关闭这个
     "no-unused-vars": ["off"],
     "no-useless-escape": ["off"]
   }

@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+// 这个文件能直接运行吗？不需要编译成 js 吗
+// 另外，实践上，ts 文件应该都放在 src 会比较好管理一些
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fs from 'fs';
