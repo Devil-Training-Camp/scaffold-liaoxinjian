@@ -1,3 +1,4 @@
 node_modules/
+# 为什么要 ignore test？
 test/
 lib/*
