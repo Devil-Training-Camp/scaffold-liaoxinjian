@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run prettier && git add -A . && npx lint-staged
+npm run lint && npx lint-staged
 # 以上命令 "lint-staged -c ./.husky/lintstagedrc.js"
