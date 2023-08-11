@@ -8,6 +8,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "sourceMap": false,
     "baseUrl": ".",
     "outDir": "./lib",
@@ -20,6 +22,7 @@
       "dom"
     ]
   },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
   "exclude": [
     "node_modules"
   ]

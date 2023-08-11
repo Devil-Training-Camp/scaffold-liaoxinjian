@@ -5,7 +5,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -25,7 +26,28 @@
     "@typescript-eslint/indent": ["warn", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "no-unused-vars": ["off"],
-    "no-useless-escape": ["off"]
+    "no-useless-escape": ["off"],
+    "prettier/prettier": ["error", {
+      // 使用分号，默认为 true
+      "semi": true,
+      // 使用单引号，默认 false （在jsx中配置无效 默认都是双引号）
+      "singleQuote": true,
+      // 每行最多多少格字符换行
+      "printWidth": 200,
+      // 行尾逗号 默认为none ，可选 none | es5 | all
+      // es5 包含es5中的数组和对象
+      // all 包含函数对象等所有可选
+      "trailingComma": "none",
+      // 箭头函数参数括号 默认为 avoid 可选avoid | always
+      // avoid 能省略括号的时候就省略 例如 x => y
+      // always 总是得有括号
+      "arrowParens": "avoid",
+      // 设置统一的行结尾样式  可选 lf | crlf | cr | auto
+      // lf 仅换行（\ n），在Linux和macOS以及git repos内部通用
+      // crlf 回车符+换行符（\ r \ n），在Windows上很常见
+      // cr  仅回车符（\ r），很少使用
+      // auto 保持现有的行尾（通过查看第一行后的内容对一个文件中的混合值进行归一化）
+      "endOfLine": "auto"
+    }]
   }
 }
