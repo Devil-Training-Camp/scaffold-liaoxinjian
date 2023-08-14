@@ -7,13 +7,12 @@
     "xj-cli": "./bin/index.js"
   },
   "scripts": {
-    "build": "npm run build:rm && npm run build:ts",
+    "build": "tsc -b --force",
     "build:rm": "rm -rf lib/*",
     "build:ts": "tsc --build",
     "lint": "eslint ./src/index.ts --ext .ts --ext .tsx",
     "lint:fix": "eslint ./src/index.ts --ext .ts --ext .tsx --fix",
-    "prepare": "husky install",
-    "prettier": "prettier --config .prettierrc --check \"src/**/*.{js,ts,css,html}\" --write"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
