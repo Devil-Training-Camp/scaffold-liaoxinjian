@@ -7,16 +7,15 @@
     "xj-cli": "./bin/index.js"
   },
   "scripts": {
-    "build": "npm run build:rm && npm run build:ts",
+    "build": "tsc -b --force",
     "build:rm": "rm -rf lib/*",
     "build:ts": "tsc --build",
-    "lint": "eslint ./src/index.ts --ext .ts --ext .tsx",
-    "lint:fix": "eslint ./src/index.ts --ext .ts --ext .tsx --fix",
-    "prepare": "husky install",
-    "prettier": "prettier --config .prettierrc --check \"src/**/*.{js,ts,css,html}\" --write"
+    "lint": "eslint ./src/index.ts --cache",
+    "lint:fix": "eslint ./src/index.ts --cache --fix",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,ts}": [
       "eslint --fix"
     ]
   },
@@ -33,7 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@types/node": "^20.3.1",
+    "@types/node": "16.0.0",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.43.0",

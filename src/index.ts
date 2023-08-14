@@ -4,8 +4,8 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import setTemplate from './create.ts';
-import { CmdOptions, QUESTION_GROUP } from './enum.ts';
+import setTemplate from './create.js';
+import { CmdOptions, QUESTION_GROUP } from './enum.js';
 const program = new Command();
 
 // 为了兼容在 esm 中没有内置的 __dirname, 这里模拟了一个 __dirname

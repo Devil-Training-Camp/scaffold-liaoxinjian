@@ -3,26 +3,21 @@
     "target": "esnext",
     "module": "es2020",
     "strict": true,
+    "rootDir":"./src",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
     "sourceMap": false,
-    "baseUrl": ".",
     "outDir": "./lib",
-    "types": [
-      "node"
-    ],
     "declaration": true,// 是否生成声明文件
     "lib": [
       "esnext",
       "dom"
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
+  "include": ["src"],
   "exclude": [
     "node_modules"
   ]
