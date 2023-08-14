@@ -1,0 +1,8 @@
+{
+  "editor.wordWrap": "on",
+  "editor.tabSize": 2,
+  "files.associations": {
+      "*.json": "jsonc",
+      "package.json": "json"
+  }
+}

@@ -3,17 +3,14 @@
     "target": "esnext",
     "module": "es2020",
     "strict": true,
+    "rootDir":"./src",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": false,
-    "baseUrl": ".",
     "outDir": "./lib",
-    "types": [
-      "node"
-    ],
     "declaration": true,// 是否生成声明文件
     "lib": [
       "esnext",

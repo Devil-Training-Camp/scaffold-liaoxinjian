@@ -5,14 +5,14 @@ import ora from 'ora';
 
 const downloadPromise = promisefy(download);
 
-export default (data: string, path: string, answer: AnswerOptions) => {
+export default (templateValue: string, path: string, answer: AnswerOptions) => {
   let template = '';
-  if (data.indexOf('/') > -1) {
-    template = data;
+  if (Object.keys(TEMPLATE_GROUP).includes(templateValue)) {
+    template = templateValue;
   } else {
-    template = TEMPLATE_GROUP[data as keyof typeof TEMPLATE_GROUP];
+    template = TEMPLATE_GROUP[templateValue as keyof typeof TEMPLATE_GROUP];
   }
-  getTemplate(template, path, answer);
+  return getTemplate(template, path, answer);
 };
 
 /**
@@ -22,13 +22,16 @@ export default (data: string, path: string, answer: AnswerOptions) => {
 const getTemplate = async (template: string, path: string, answer: AnswerOptions) => {
   const spinner = ora('Loading').start();
   const mergePath = answer.mergePath || 'main';
-  downloadPromise(`${template}#${mergePath}`, `${path}`)
-    .then(res => {
-      console.log('res', res);
+  try {
+    const res = await downloadPromise(`${template}#${mergePath}`, `${path}`);
+    console.log('res', res);
+    if (res) {
       spinner.succeed('done!');
-    })
-    .catch(err => {
-      console.log('err is', err);
+    } else {
       spinner.fail('fail');
-    });
+    }
+  } catch (e) {
+    console.log('e', e);
+    spinner.fail('fail');
+  }
 };
